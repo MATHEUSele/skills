@@ -84,6 +84,8 @@ sequenceDiagram
 | `/executar <BACK-ID>` | ⚙️ | Lê os docs, muda para branch da Issue, implementa e roda `checks` | Sim |
 | `/revisar [BACK-ID]` | 🔍 | Audita `git diff` contra docs, regras, escopo e critérios de aceite | Não |
 | `/end` | ✅ | Atualiza backlog, faz stage seletivo, commit, grava `sessions.md` e push | Sim |
+| `/post` | ✍️ | Sugere temas, redige post de LinkedIn, gera arte 1:1 e registra no histórico | Sim |
+| `/conselho <decisão>` | 🏛️ | Protocolo LLM Council: 5 conselheiros, revisão anônima e veredito | Não |
 
 ---
 
@@ -136,7 +138,9 @@ skills/
 │  ├─ backlog/SKILL.md
 │  ├─ executar/SKILL.md
 │  ├─ revisar/SKILL.md
-│  └─ end/SKILL.md
+│  ├─ end/SKILL.md
+│  ├─ post/SKILL.md
+│  └─ conselho/SKILL.md
 ├─ templates/
 │  ├─ project.config.yml
 │  ├─ docs-outline.md
@@ -184,7 +188,7 @@ meu-projeto/
 
 O `plugin.json` na raiz transforma este repositório em um plugin pronto:
 1. Copie ou clone esta pasta para `~/.gemini/config/plugins/dev-previsivel/`.
-2. Ative na tela de Customizations e use `/setup-projeto`, `/init`, `/backlog`, `/executar`, `/revisar` e `/end`.
+2. Ative na tela de Customizations e use `/setup-projeto`, `/init`, `/backlog`, `/executar`, `/revisar`, `/end`, `/post` e `/conselho`.
 
 </details>
 
