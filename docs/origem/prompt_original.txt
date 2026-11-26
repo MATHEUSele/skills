@@ -1,0 +1,75 @@
+## 🛠️ PASSO A PASSO RIGOROSO PARA O SETUP:
+
+### PASSO 1: Criação da Documentação Técnica do Projeto (Máximo 5 Arquivos)
+Crie uma pasta oculta `.agents/` na raiz do projeto e escreva obrigatoriamente até **5 documentos técnicos** que servirão como a "verdade absoluta" e diretriz técnica para o ciclo de vida do desenvolvimento do software:
+
+1. `.agents/01_system_architecture.md`:  
+   Arquitetura de software da aplicação (visão geral dos componentes, Frontend, Backend, microsserviços/módulos, banco de dados e integrações). Estrutura padronizada de diretórios do repositório, padrões de projeto adotados, ciclo de vida da requisição, autenticação/autorização, segurança/privacidade e diretrizes de UX/UI da aplicação.
+
+2. `.agents/02_data_model_and_persistence.md`:  
+   Modelagem completa da camada de dados:
+   * **Persistência Transacional (OLTP):** DDLs de tabelas/coleções, entidades centrais e tabelas de apoio/domínio, tipos de dados, chaves primárias (UUID/Auto-increment), chaves estrangeiras, restrições de integridade, índices e estratégia de migrações (migrations).
+   * **Camada Analítica / Relatórios (se aplicável):** Modelagem dimensional ou schemas analíticos para BI e dashboards, agregadores e regras de particionamento/datas.
+
+3. `.agents/03_business_rules_and_logic.md`:  
+   Regras de negócio e lógica de domínio do software:
+   * Descrição detalhada dos fluxos operacionais e casos de uso da aplicação.
+   * Regras de validação de dados de entrada e restrições de negócio.
+   * Fórmulas matemáticas, algoritmos, cálculos automáticos e máquinas de estado dos fluxos.
+   * Tratamento de regras de exceção e mensagens de erro de negócio.
+
+4. `.agents/04_api_and_integration_specs.md`:  
+   Especificação técnica das interfaces e integrações do sistema:
+   * Contratos de APIs (RESTful/GraphQL/gRPC), convenções de rotas, payloads de requisição (Request) e resposta (Response), paginação, filtros e códigos de status HTTP.
+   * Pipelines de ingestão, rotinas de carga/migração de dados legado ou workers assíncronos.
+   * Integrações com serviços de terceiros, webhooks, filas de mensageria e tratamento de falhas/retentativas.
+
+5. `.agents/05_devops_ci_cd_deployment.md`:  
+   Guia de infraestrutura, conteinerização e deploy da solução:
+   * `Dockerfile`, `docker-compose.yml` e scripts de orquestração local/produção.
+   * Dicionário de variáveis de ambiente (`.env.example`) com configurações necessárias.
+   * Workflows de CI/CD (ex: GitHub Actions) contendo pipeline de testes automatizados, linters, build das imagens e deploy seguro na infraestrutura de hospedagem (VPS, Cloud ou On-premises).
+
+---
+
+### PASSO 2: Criação do Backlog Ágil (`.agents/backlog.md`)
+Dentro de `.agents/`, crie o arquivo `backlog.md` estruturado com duas tabelas:
+
+#### Tabela 1: Issues Funcionais Definitivas
+`| Issue | Funcionalidade | Status | Responsável principal |`
+
+#### Tabela 2: Detalhamento de Tarefas (BACKs)
+`| ID | Sprint | Épico | Funcionalidade | Tarefa | Descrição da implementação | Responsável | Dependência | Issue | Status |`
+
+#### Regras Obrigatórias do Backlog:
+1. 🚫 **Regra de Dependência Sequencial:** Uma tarefa (BACK) só pode depender de BACKs da MESMA Issue ou de BACKs de ISSUES ANTERIORES. NUNCA aponte dependência para uma Issue futura.
+2. 👤 **Regra de Responsabilidade Exclusiva por Issue:** Cada Issue possui um único Responsável Principal da equipe (**Rian**, **Geraldo**, **Matheus**, **Maxsuel**, **Walyson**). Uma Issue tem seus BACKs, e **somente o integrante responsável pela Issue realiza todos os BACKs atribuídos a ela** (um integrante por Issue, logo só ele faz as BACKs da Issue atribuída a ele). A divisão das Issues entre os 5 membros deve ser equilibrada.
+3. 📋 **Numeração e Status:** Use IDs sequenciais contínuos (`BACK-001`, `BACK-002`, etc.) e inicie todas as tarefas com status `To Do`.
+
+---
+
+### PASSO 3: Criação das Skills de Fluxo de Trabalho (`.agents/skills/`)
+Crie a pasta `.agents/skills/` com os arquivos `SKILL.md` (com frontmatter YAML contendo `name` e `description`) para as 3 skills:
+
+1. **`.agents/skills/backlog/SKILL.md` (Skill `/backlog`):**
+   - Lê `.agents/backlog.md` e renderiza as tabelas formatadas com um resumo das tarefas por status.
+
+2. **`.agents/skills/executar/SKILL.md` (Skill `/executar`):**
+   - Recebe o ID da task (ex: `/executar BACK-001`).
+   - Identifica a Issue associada no backlog.
+   - **CRÍTICO:** Lê religiosamente os 5 documentos técnicos em `.agents/` para seguir a arquitetura e as regras de negócio sem improvisações.
+   - Cria ou alterna para a branch da **ISSUE** (ex: `git checkout -b issue-1`). **NUNCA crie branch com o nome da BACK!**
+   - Altera o status do BACK para `In Progress` no `backlog.md`.
+   - Codifica a solução com excelência técnica de forma autônoma.
+   - Apresenta o resumo do que foi criado/modificado e aguarda revisão ou o comando `/end`.
+
+3. **`.agents/skills/end/SKILL.md` (Skill `/end`):**
+   - Executa `git add .` e commit padronizado: `git commit -m "<BACK-ID>: <descricao>"`.
+   - Executa `git push origin <branch_da_issue>`.
+   - Atualiza o status do BACK para `Done` em `.agents/backlog.md` (e da Issue se todos os BACKs dela estiverem concluídos).
+   - Informa o encerramento com sucesso e sugere a próxima task a executar.
+
+---
+
+## 🎯 Ação Imediata:
+Analise o escopo e a documentação fornecida do projeto, realize o setup completo criando a pasta `.agents/`, os 5 documentos de arquitetura adaptados aos requisitos do sistema, o `backlog.md` e as 3 skills em `.agents/skills/`. Ao final, apresente o backlog para mim e sugira a primeira atividade a ser executada com o comando `/executar`.

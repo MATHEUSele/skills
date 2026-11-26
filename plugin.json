@@ -1,0 +1,12 @@
+{
+  "name": "dev-previsivel",
+  "displayName": "Dev Previsível",
+  "description": "Regras e skills padronizadas para que a geração de código por agentes de IA seja previsível em todos os projetos: setup de docs técnicos, backlog, execução por task e fechamento com git.",
+  "version": "0.1.0",
+  "logo": "assets/logo.svg",
+  "suggestedPrompts": [
+    "/setup-projeto para este repositório",
+    "/backlog",
+    "/executar BACK-001"
+  ]
+}

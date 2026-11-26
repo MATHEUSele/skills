@@ -1,0 +1,29 @@
+# Configuração do projeto — lida por todas as skills do plugin dev-previsivel
+project:
+  name: ""
+  # Perfil principal do projeto: dev | ia-automacao | dados
+  # Mapeamento para rules/stacks/: dev -> dev-software.md | ia-automacao -> ia-automacao.md | dados -> analise-dados.md
+  profile: dev
+  stack: []              # módulos extras em rules/stacks/<stack>.md (ex.: [python, postgres])
+
+team:                    # membros que podem ser responsáveis por Issues
+  - name: ""
+    role: ""
+
+backlog:
+  sprints: true
+  one_owner_per_issue: true     # só o responsável da Issue executa seus BACKs
+  statuses: [To Do, In Progress, Done]
+
+git:
+  branch_pattern: "issue-{n}"   # NUNCA nome de BACK
+  commit_format: "{back_id}: {descricao}"
+  remote: origin
+  main_branch: main
+
+checks:                  # rodados por /executar e /end antes de concluir
+  lint: ""
+  test: ""
+  build: ""
+
+docs_language: pt-BR

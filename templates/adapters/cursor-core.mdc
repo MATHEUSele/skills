@@ -1,0 +1,5 @@
+---
+description: Regras core Dev Previsível
+alwaysApply: true
+---
+Siga integralmente as regras de @AGENTS.md e use `.agents/` como fonte da verdade.
