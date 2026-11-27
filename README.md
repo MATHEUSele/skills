@@ -31,6 +31,8 @@ Quando você só cola um prompt em um projeto novo, cada modelo inventa uma estr
 
 O **Dev Previsível** fixa no repositório o que precisa ser determinístico:
 - **Documentação como fonte da verdade:** 5 documentos técnicos padronizados + regras por perfil em `.agents/`.
+- **Revisão anti-viés:** `/revisar` usa subagente em contexto isolado (quando suportado), checklist antes do diff e testes adversariais de borda para evitar viés de confirmação.
+- **Documentação visual padronizada:** `/readme` gera `README.md` e SVGs (banner, logo e demo animado) fiéis ao projeto.
 - **Memória entre sessões:** `.agents/sessions.md` guarda decisões e o `HEAD` do git para que o `/init` retome exatamente de onde parou — inclusive detectando mudanças feitas por colegas.
 - **Portátil entre ferramentas:** os mesmos arquivos funcionam no **Antigravity**, **Claude Code** e **Cursor**.
 
@@ -52,6 +54,8 @@ flowchart LR
   F --> H[".agents/sessions.md"]
   H --> I
 ```
+
+> Sob demanda (após setup ou entregas), use `/readme` para gerar ou atualizar o `README.md` e os SVGs em `assets/`.
 
 ### Ciclo de memória entre sessões
 
@@ -82,10 +86,11 @@ sequenceDiagram
 | `/init` | 🧭 | Lê `sessions.md` + `git log/diff` desde a última sessão e entrega briefing | Não |
 | `/backlog` | 📋 | Renderiza Issues e BACKs com resumo por status e próxima task livre | Não |
 | `/executar <BACK-ID>` | ⚙️ | Lê os docs, muda para branch da Issue, implementa e roda `checks` | Sim |
-| `/revisar [BACK-ID]` | 🔍 | Audita `git diff` contra docs, regras, escopo e critérios de aceite | Não |
+| `/revisar [BACK-ID]` | 🔍 | Auditoria adversarial (subagente isolado quando suportado) contra docs, regras, casos de borda e checks | Não |
 | `/end` | ✅ | Atualiza backlog, faz stage seletivo, commit, grava `sessions.md` e push | Sim |
 | `/post` | ✍️ | Sugere temas, redige post de LinkedIn, gera arte 1:1 e registra no histórico | Sim |
 | `/conselho <decisão>` | 🏛️ | Protocolo LLM Council: 5 conselheiros, revisão anônima e veredito | Não |
+| `/readme` | 🎨 | Gera ou atualiza `README.md` e SVGs (banner, logo e demo animado) no padrão visual do plugin | Sim |
 
 ---
 
@@ -140,13 +145,15 @@ skills/
 │  ├─ revisar/SKILL.md
 │  ├─ end/SKILL.md
 │  ├─ post/SKILL.md
-│  └─ conselho/SKILL.md
+│  ├─ conselho/SKILL.md
+│  └─ readme/SKILL.md
 ├─ templates/
 │  ├─ project.config.yml
 │  ├─ docs-outline.md
 │  ├─ backlog.md
 │  ├─ sessions.md
-│  └─ adapters/
+│  ├─ adapters/
+│  └─ readme/
 ├─ scripts/validate.py
 └─ docs/origem/prompt_original.txt
 ```
@@ -188,7 +195,7 @@ meu-projeto/
 
 O `plugin.json` na raiz transforma este repositório em um plugin pronto:
 1. Copie ou clone esta pasta para `~/.gemini/config/plugins/dev-previsivel/`.
-2. Ative na tela de Customizations e use `/setup-projeto`, `/init`, `/backlog`, `/executar`, `/revisar`, `/end`, `/post` e `/conselho`.
+2. Ative na tela de Customizations e use `/setup-projeto`, `/init`, `/backlog`, `/executar`, `/revisar`, `/end`, `/post`, `/conselho` e `/readme`.
 
 </details>
 

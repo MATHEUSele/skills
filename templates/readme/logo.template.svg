@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Logo do Projeto">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Margem ~10% preservada; fundo transparente -->
+  <rect x="28" y="28" width="200" height="200" rx="44" fill="url(#logoGrad)"/>
+
+  <!-- Ícone central: substitua ou ajuste os paths conforme a identidade do projeto -->
+  <path d="M92 78 C76 78 72 86 72 100 L72 114 C72 122 66 128 58 128 C66 128 72 134 72 142 L72 156 C72 170 76 178 92 178"
+        fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M164 78 C180 78 184 86 184 100 L184 114 C184 122 190 128 198 128 C190 128 184 134 184 142 L184 156 C184 170 180 178 164 178"
+        fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M104 130 L121 147 L154 108"
+        fill="none" stroke="#34D399" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
